@@ -11,7 +11,8 @@
     "build": "vite build",
     "preview": "vite preview",
     "update-tanstack": "npm i @tanstack/react-devtools@latest && npm i @tanstack/react-router@latest && npm i @tanstack/react-router-devtools@latest && npm i @tanstack/react-router-ssr-query@latest && npm i @tanstack/react-start@latest && npm i @tanstack/router-plugin@latest",
-    "pg": "docker container run -e POSTGRES_USER=docker -e POSTGRES_PASSWORD=docker -p 5432:5432 -v ~/Documents/pg-data-jira:/var/lib/postgresql postgres:18.2-alpine3.23"
+    "pg": "docker container run -e POSTGRES_USER=docker -e POSTGRES_PASSWORD=docker -p 5432:5432 -v ~/Documents/pg-data-jira:/var/lib/postgresql postgres:18.2-alpine3.23",
+    "format": "npx prettier --write \"src/**/*.{ts,tsx}\""
   },
   "dependencies": {
     "@tailwindcss/vite": "^4.1.18",
