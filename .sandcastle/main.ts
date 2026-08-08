@@ -11,6 +11,6 @@ await run({
   promptFile: "./.sandcastle/prompt.md",
   branchStrategy: {
     type: "branch",
-    branch: "agent/foo-bar",
+    branch: "agent/sql-file-1b",
   },
 });

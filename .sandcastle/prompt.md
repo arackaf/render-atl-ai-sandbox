@@ -5,7 +5,11 @@
 
 # Task
 
-Create a new file called all_tasks.sql that has a single query that selects all tasks
+Create a new file called all_tasks.sql that has a single query that selects all tasks.
+
+Commit the branch to origin.
+
+Open a PR on github call sql_pr
 
 # Done
 
