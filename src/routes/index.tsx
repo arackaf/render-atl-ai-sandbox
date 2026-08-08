@@ -14,10 +14,7 @@ const getAllEpics = createServerFn().handler(async () => {
 
 export const Route = createFileRoute("/")({
   loader: async () => {
-    const [tickets, allEpics] = await Promise.all([
-      getAllTickets(),
-      getAllEpics(),
-    ]);
+    const [tickets, allEpics] = await Promise.all([getAllTickets(), getAllEpics()]);
     return { tickets, epics: allEpics };
   },
   component: Home,
@@ -33,12 +30,8 @@ function Home() {
         {tickets.map((ticket) => (
           <li key={ticket.id} className="border p-3 rounded">
             <span className="font-semibold">{ticket.title}</span>
-            {ticket.description && (
-              <p className="text-sm text-gray-600">{ticket.description}</p>
-            )}
-            <span className="ml-2 text-xs px-2 py-0.5 rounded bg-gray-200">
-              {ticket.status}
-            </span>
+            {ticket.description && <p className="text-sm text-gray-600">{ticket.description}</p>}
+            <span className="ml-2 text-xs px-2 py-0.5 rounded bg-gray-200">{ticket.status}</span>
           </li>
         ))}
       </ul>
@@ -48,9 +41,7 @@ function Home() {
         {epics.map((epic) => (
           <li key={epic.id} className="border p-3 rounded">
             <span className="font-semibold">{epic.name}</span>
-            {epic.description && (
-              <p className="text-sm text-gray-600">{epic.description}</p>
-            )}
+            {epic.description && <p className="text-sm text-gray-600">{epic.description}</p>}
           </li>
         ))}
       </ul>

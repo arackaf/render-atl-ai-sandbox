@@ -1,13 +1,4 @@
-import {
-  pgEnum,
-  pgTable,
-  serial,
-  text,
-  timestamp,
-  integer,
-  foreignKey,
-  primaryKey,
-} from "drizzle-orm/pg-core";
+import { pgEnum, pgTable, serial, text, timestamp, integer, foreignKey, primaryKey } from "drizzle-orm/pg-core";
 import { sql } from "drizzle-orm";
 
 export const issueStatus = pgEnum("issue_status", ["todo", "done"]);
