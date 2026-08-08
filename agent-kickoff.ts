@@ -45,6 +45,10 @@ Promise.all(
         type: "branch",
         branch: `agent/gh-issue-${issueId}`,
       },
+      logging: {
+        type: "stdout",
+        verbose: false,
+      },
     })
       .then((resp) => `${sep}\n\nIssue ${issueId} completed:\n\n${resp}\n\n${sep}\n\n`)
       .catch((error) => `${sep}\n\nIssue ${issueId} failed: ${error}\n\n${sep}\n\n`);
