@@ -17,7 +17,9 @@ export const issues = pgTable("issues", {
   title: text().notNull(),
   description: text(),
   status: issueStatus().default("todo").notNull(),
-  epicId: integer("epic_id").references(() => epics.id, { onDelete: "restrict" }),
+  epicId: integer("epic_id").references(() => epics.id, {
+    onDelete: "restrict",
+  }),
   createdAt: timestamp("created_at")
     .default(sql`now()`)
     .notNull(),
