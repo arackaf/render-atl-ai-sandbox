@@ -1,4 +1,5 @@
 import { execFileSync } from "node:child_process";
+import { checkbox } from "@inquirer/prompts";
 
 type Issue = {
   number: number;
@@ -21,4 +22,12 @@ const issues: Issue[] = JSON.parse(output);
 
 const availableIssues = issues.filter((issue) => !issue.blockedBy?.nodes?.some((blocker) => blocker.state === "OPEN"));
 
-console.log(availableIssues);
+const selectedIssueIds = await checkbox({
+  message: "Select issues to implement:",
+  choices: availableIssues.map((issue) => ({
+    name: issue.title,
+    value: issue.number,
+  })),
+});
+
+console.log("Selected issue IDs:", selectedIssueIds);
