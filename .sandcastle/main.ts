@@ -9,8 +9,4 @@ await run({
   agent: claudeCode("claude-opus-4-6"),
   sandbox: docker(),
   promptFile: "./.sandcastle/prompt.md",
-  branchStrategy: {
-    type: "branch",
-    branch: "agent/sql-file-1b",
-  },
 });
