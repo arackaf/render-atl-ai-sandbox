@@ -48,6 +48,7 @@ Promise.all(
       branchStrategy: {
         type: "branch",
         branch: `agent/gh-issue-${issueId}`,
+        baseBranch: "main",
       },
       logging: {
         type: "stdout",
