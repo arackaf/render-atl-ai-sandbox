@@ -17,9 +17,13 @@ type Issue = {
   };
 };
 
-const output = execFileSync("gh", ["issue", "list", "--state", "open", "--limit", "100", "--json", "number,title,body,blockedBy"], {
-  encoding: "utf8",
-});
+const output = execFileSync(
+  "gh",
+  ["issue", "list", "--state", "open", "--limit", "100", "--json", "number,title,body,blockedBy"],
+  {
+    encoding: "utf8",
+  },
+);
 
 const issues: Issue[] = JSON.parse(output);
 
@@ -52,7 +56,7 @@ Promise.all(
     })
       .then((resp) => `${sep}\n\nIssue ${issueId} completed:\n\n${resp}\n\n${sep}\n\n`)
       .catch((error) => `${sep}\n\nIssue ${issueId} failed: ${error}\n\n${sep}\n\n`);
-  })
+  }),
 ).then(() => {
   console.log("All issues completed");
 });
