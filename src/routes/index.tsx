@@ -2,13 +2,17 @@ import { createFileRoute } from "@tanstack/react-router";
 import { createServerFn } from "@tanstack/react-start";
 import { asc, eq } from "drizzle-orm";
 import { db } from "#/drizzle/db";
-import { issues } from "#/drizzle/schema";
+import { issues, epics } from "#/drizzle/schema";
 import { queryOptions, useSuspenseQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import { DndContext, useDroppable, useDraggable } from "@dnd-kit/core";
 import type { DragEndEvent } from "@dnd-kit/core";
 
 const getAllTickets = createServerFn().handler(async () => {
   return db.select().from(issues).orderBy(asc(issues.createdAt));
+});
+
+const getAllEpics = createServerFn().handler(async () => {
+  return db.select().from(epics);
 });
 
 const updateTicketStatus = createServerFn()
@@ -22,9 +26,17 @@ const ticketsQueryOptions = queryOptions({
   queryFn: () => getAllTickets(),
 });
 
+const epicsQueryOptions = queryOptions({
+  queryKey: ["epics"],
+  queryFn: () => getAllEpics(),
+});
+
 export const Route = createFileRoute("/")({
   loader: async ({ context }) => {
-    await context.queryClient.ensureQueryData(ticketsQueryOptions);
+    await Promise.all([
+      context.queryClient.ensureQueryData(ticketsQueryOptions),
+      context.queryClient.ensureQueryData(epicsQueryOptions),
+    ]);
   },
   component: Home,
 });
