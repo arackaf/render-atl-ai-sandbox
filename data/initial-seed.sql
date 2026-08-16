@@ -35,5 +35,4 @@ INSERT INTO issues (title, description, status, epic_id) VALUES
 INSERT INTO issues (title, description, status) VALUES
   ('Fix N+1 query in project listing endpoint', 'The GET /projects endpoint fires a separate query for each project''s issue count. Refactor to use a single aggregating query.', 'todo'),
   ('Upgrade Node.js from 18 to 20 LTS', 'Update the base Docker image and CI config to Node 20. Run the full test suite and fix any breakages.', 'done'),
-  ('Add structured JSON logging', 'Replace console.log calls with a structured logger (pino) that outputs JSON in production and pretty-prints in development.', 'todo'),
-  ('Document API endpoints in OpenAPI spec', 'Write an OpenAPI 3.1 spec covering all public endpoints, request/response schemas, and error codes.', 'done');
+  ('Add structured JSON logging', 'Replace console.log calls with a structured logger (pino) that outputs JSON in production and pretty-prints in development.', 'todo');
